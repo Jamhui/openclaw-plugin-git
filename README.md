@@ -7,6 +7,7 @@ OpenClaw plugin for managing configured git projects.
 - `/gps list` — list configured projects and mark the default one
 - `/gps -m "message"` — run `git add .` → `git commit -m "message"` → `git push` on the default project
 - `/gps <project> -m "message"` — run the same flow on a selected project
+- In short: `/gps` uses the default project, and `/gps <project>` uses the matching project
 - `/gpl <project>` — run `git pull` for a selected project
 
 ## Install
