@@ -2,6 +2,8 @@
 
 OpenClaw plugin for managing configured git projects.
 
+- 中文文档：[`README.zh-CN.md`](./README.zh-CN.md)
+
 ## Features
 
 - `/gps list` — list configured projects and mark the default one
