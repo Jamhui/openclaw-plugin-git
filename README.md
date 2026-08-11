@@ -1,34 +1,35 @@
 # GPS for OpenClaw
 
-一个 OpenClaw 插件，用来对配置好的 git 项目执行：
+OpenClaw plugin for managing configured git projects.
 
-- `/gps list`：列出项目
-- `/gps -m "消息"`：默认项目执行 `git add .` → `git commit -m` → `git push`
-- `/gps 项目名 -m "消息"`：指定项目执行同样流程
-- `/gpl`：对默认项目或指定项目执行 `git pull`
+## Features
 
-## 安装
+- `/gps list` — list configured projects and mark the default one
+- `/gps -m "message"` — run `git add .` → `git commit -m "message"` → `git push` on the default project
+- `/gps <project> -m "message"` — run the same flow on a selected project
+- `/gpl <project>` — run `git pull` for a selected project
+
+## Install
 
 ```bash
 openclaw plugins install clawhub:@Jamhui/gps
 ```
 
-也可以从 npm tarball 或 git 仓库安装。
-
-## 配置
-
-在插件配置中为你的 QQBot 账号配置项目：
+## Configuration
 
 ```json
 {
-  "accounts": {
-    "<account-id>": {
-      "defaultProject": "main",
-      "projects": {
-        "main": {
-          "path": "/abs/path/to/repo",
-          "remote": "origin",
-          "branch": "main"
+  "gps": {
+    "enabled": true,
+    "config": {
+      "accounts": {
+        "account-a": {
+          "defaultProject": "main",
+          "projects": {
+            "main": {
+              "path": "/abs/path/to/repo"
+            }
+          }
         }
       }
     }
@@ -36,10 +37,26 @@ openclaw plugins install clawhub:@Jamhui/gps
 }
 ```
 
-- `defaultProject` 可省略，但没有默认项目时，`/gps -m` 会要求你显式指定项目名。
-- `path` 必须是 git 仓库绝对路径。
+### Field notes
 
-## 发布版构建
+- `account-a` — replace with your own account identifier
+- `defaultProject` — default project key used by `/gps -m`
+- `projects.<name>.path` — absolute path to a local git repository
+
+## Usage
+
+- `/gps list` — list projects for the current account
+- `/gps -m "message"` — commit and push using the default project
+- `/gps <project> -m "message"` — commit and push using a specific project
+- `/gpl <project>` — pull using a specific project
+
+## Notes
+
+- `-m` must be followed by a commit message
+- `path` must point to a real git repository on this machine
+- If `defaultProject` is missing, `/gps -m` will require an explicit project name
+
+## Build and package
 
 ```bash
 npm install
@@ -47,8 +64,8 @@ npm run build
 npm pack
 ```
 
-`prepack` 会在打包前自动构建 `dist/index.js`。
+`prepack` builds `dist/index.js` before packaging.
 
-## 许可证
+## License
 
 MIT
