@@ -10,7 +10,7 @@
 ## 安装
 
 ```bash
-openclaw plugins install clawhub:@openclaw/gps
+openclaw plugins install clawhub:@Jamhui/gps
 ```
 
 也可以从 npm tarball 或 git 仓库安装。

@@ -1,6 +1,6 @@
 {
-  "name": "@openclaw/gps",
-  "version": "0.1.0",
+  "name": "@Jamhui/gps",
+  "version": "0.1.1",
   "type": "module",
   "peerDependencies": {
     "openclaw": ">=2026.3.24-beta.2"
