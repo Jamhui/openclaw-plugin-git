@@ -1,0 +1,66 @@
+{
+  "id": "gps",
+  "name": "GPS",
+  "description": "Run git add/commit/push and git pull for configured projects with direct usage help.",
+  "commandAliases": [
+    {
+      "name": "gps",
+      "kind": "runtime-slash"
+    },
+    {
+      "name": "gpl",
+      "kind": "runtime-slash"
+    }
+  ],
+  "activation": {
+    "onStartup": false,
+    "onCommands": [
+      "gps",
+      "gpl"
+    ]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "accounts": {
+        "type": "object",
+        "description": "QQBot account id to its isolated project configuration.",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "defaultProject": {
+              "type": "string",
+              "description": "Default project key for this bot account."
+            },
+            "projects": {
+              "type": "object",
+              "description": "Projects this bot account is allowed to push.",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "description": "Absolute path to the git repository."
+                  },
+                  "remote": {
+                    "type": "string",
+                    "description": "Optional git remote name."
+                  },
+                  "branch": {
+                    "type": "string",
+                    "description": "Optional branch name to push."
+                  }
+                },
+                "required": ["path"]
+              }
+            }
+          },
+          "required": ["projects"]
+        }
+      }
+    }
+  }
+}
