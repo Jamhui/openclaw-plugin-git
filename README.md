@@ -55,6 +55,15 @@ openclaw plugins install clawhub:@Jamhui/gps
 - `-m` must be followed by a commit message
 - `path` must point to a real git repository on this machine
 - If `defaultProject` is missing, `/gps -m` will require an explicit project name
+- The plugin only operates on configured local repositories
+- It runs `git add`, `git commit`, `git pull`, and `git push` only; it does not execute arbitrary shell commands
+- If a repo has no changes, it stops before commit/push
+
+## Publishing / review note
+
+This plugin is intentionally narrow: it only automates git operations for repositories explicitly configured in OpenClaw settings. It does not clone repositories, fetch remote scripts, browse the filesystem outside configured paths, or run arbitrary shell commands.
+
+The `push` step is part of the core workflow requested by the user, so the runtime must call `git` directly. That is the main reason a security scanner may classify the package as high-risk even though the behavior is constrained and auditable.
 
 ## Build and package
 

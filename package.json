@@ -22,12 +22,16 @@
     ]
   },
   "license": "MIT",
+  "description": "OpenClaw plugin for configured local git projects with list, pull, commit, and push flows.",
   "files": [
     "dist",
     "openclaw.plugin.json",
     "README.md",
     "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "npx --yes esbuild index.ts --bundle --platform=node --format=esm --outfile=dist/index.js",
     "prepack": "npm run build"
