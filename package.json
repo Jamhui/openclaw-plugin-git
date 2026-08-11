@@ -22,7 +22,7 @@
     ]
   },
   "license": "MIT",
-  "description": "OpenClaw plugin for configured local git projects with list, pull, commit, and push flows.",
+  "description": "OpenClaw plugin for configured local git projects with push and pull workflows.",
   "files": [
     "dist",
     "openclaw.plugin.json",

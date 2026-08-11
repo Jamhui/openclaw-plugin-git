@@ -1,7 +1,7 @@
 {
   "id": "gps",
   "name": "GPS",
-  "description": "Run git add/commit/push and git pull for explicitly configured local git projects.",
+  "description": "Push or sync explicitly configured local git projects with /gps and /gpl.",
   "commandAliases": [
     {
       "name": "gps",
